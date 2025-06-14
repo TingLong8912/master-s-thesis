@@ -16,7 +16,7 @@ jobs:
         ref: master
 
     - name: Clone From Hsins/NTU-Thesis
-      run: git clone https://github.com/Hsins/NTU-Thesis.git template
+      run: git clone https://github.com/TingLong8912/master-s-thesis.git template
 
     - name: Copy Fonts
       run: cp -avr ./template/fonts ./
