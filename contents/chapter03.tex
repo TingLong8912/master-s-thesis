@@ -8,12 +8,12 @@
 
 為回應空間認知理論對人類位置理解的需求，並解決位置描述語意表徵上的挑戰，本研究設計了O-SLD三層式架構。該框架透過語意推理機制，能進一步從空間資料產生位置語意及語意式位置描述，能達成逆向地理編碼任務。框架的結構如\ref{fig:three-layered}所示，O-SLD三層式架構主要由三個層級組成：資料層、語意層和自然語言層。三層之間呈現自上而下的語意映射關係，分別對應空間資料、知識本體與語言表達，透過語意規則加以串連各層級，形成完整的語意推論機制。
 
-% \begin{figure}[!htbp]
-% \centering
-% \includegraphics[width = \textwidth]{figures/three-layered.png}
-% \caption{位置描述語意三層式架構}
-% \label{fig:three-layered}
-% \end{figure}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/three-layered.png}
+\caption{位置描述語意三層式架構}
+\label{fig:three-layered}
+\end{figure}
 
 「資料層」主要負責空間資料的紀錄與關係操作，包括點、線和面等的GIS Feature，以及其屬性與彼此間的空間關係。本研究將資料層獨立設計，旨在提供全面且詳盡的空間資料表示，支持進階的空間關係建模與語意推理。該層作為框架的基礎，為後續語意層與自然語言層提供圖資、詮釋資料及空間操作。
 
@@ -59,13 +59,13 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 為從語意產生文字，本研究選擇E-HowNet作為詞庫。E-HowNet為中央研究院資訊所詞庫小組開發，內容涵蓋九萬多詞條與知網連結，以簡單概念取代義原，具有較容易轉換為自然語言的特性\citep{RN186}。本研究鑒於詞彙表徵與表達式概念的特性，將其作為預定義好的詞意及詞彙對照關係，結合DOLCE對於概念與實體的分類，以達成位置描述中空間關係的語意表達。
 
-% 以「上」該筆詞條為例(參見\ref{tab:ehownetDemo})，詞彙背後所代表的詞意(即E-HowNet表達式)係為「upper|上」，當中「upper」可對應到GIS中的空間關係操作結果，而係根據與特定參考物產生空間關係而達成。又以「縣界」該筆詞條為例，其空間關係係為「boundary」，而該筆詞條限制的參考物特徵為「county|縣」。
+以「上」該筆詞條為例(參見\ref{tab:ehownetDemo})，詞彙背後所代表的詞意(即E-HowNet表達式)係為「upper|上」，當中「upper」可對應到GIS中的空間關係操作結果，而係根據與特定參考物產生空間關係而達成。又以「縣界」該筆詞條為例，其空間關係係為「boundary」，而該筆詞條限制的參考物特徵為「county|縣」。
 
-% 綜述而言，根據前述之上層知識本體和文獻蒐集建構本研究的位置描述知識本體，以形式化位置知識和貢獻於位置描述相關的概念使得空間資料得以與位置語意及位置描述文字連結，使GIS能納入對個人對於空間位置與地點的表達。\ref{tab:perfix}羅列了在本研究發展位置描述知識本體上使用到的既有知識本體的前綴(prefix)和網址。
+綜述而言，根據前述之上層知識本體和文獻蒐集建構本研究的位置描述知識本體，以形式化位置知識和貢獻於位置描述相關的概念使得空間資料得以與位置語意及位置描述文字連結，使GIS能納入對個人對於空間位置與地點的表達。\ref{tab:perfix}羅列了在本研究發展位置描述知識本體上使用到的既有知識本體的前綴(prefix)和網址。
 
-% \input{tables/ehownetDemo}
+\input{tables/ehownetDemo}
 
-% \input{tables/prefix}
+\input{tables/prefix}
 
 \subsection{圖徵及性質}
 
@@ -93,7 +93,7 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 該分類架構係參酌地形圖製圖傳統及經驗、考量基本地形圖應涵蓋之地形資料內容等因素，內容分類採樹狀階層結構，涵蓋粗略主題之上階層到特定主題的下階層，包含測量控制點、界線、人工構造物、交通系統和水系等十類。該分類編碼表提供詳盡的階層式分類及說明，可作為空間物件的類型語意資料。舉例而言，「9210100國界線」係為「兩國之間的界線經確定者，為國家領土歸屬之明確界線，常由國與國之間協定，依天然地形或地理位置而定之」。透過此類具明確語意的分類之結構，可有效支持圖徵個體在知識本體中之類型建模，並促進與其他地方面向(如功能、型態或社會角色等)的整合推理，例如，社會角色重要之物件視為「地標」類型，這樣的類型可提供作為參考物在位置描述上的重要程度語意資訊及位置描述語言組成結構中的元素。
 
-% \input{tables/topoItemDemo}
+\input{tables/topoItemDemo}
 
 \subsubsection{GIS空間操作}
 
@@ -117,12 +117,12 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 為明確與位置相關的函數與屬性值表達式之意涵，參考\citet{RN45}提出的中文空間介詞及方位詞語意圖，修改其內容為E-HowNet表達式之概念，以更好釐清空間介詞與方位詞的語意角色及其在空間關係上的表達。\ref{fig:spatialpreposition}所示，存在於一地的物體，存在著客觀的地理參考系統(即方位)和主觀的固有參考系統(即前後左右上下)，而空間物件本身在E-HowNet以「place|地方」作為表達，結合前述對於地方面向的討論，地方存在地理面向，包含其自身規模和幾何形狀等，在語意圖中以立方體作為表示。外圍的圓柱底說明了「location={}」的意涵，即「在」，「在」與「place|地方」本身存在落差，這一落差是來自於各類因素(如空間認知或地方面向等)造成，當我們指稱在某地方上，可能並不全然物理落在該地方，而是在於其緩衝區(buffer)範圍內。最後，語意圖中說明了「Part」的意涵，意味著在「location={}」的範疇中，佔據特定空間的區塊。以實際情況為例，「台灣『東北部』」表示在台灣這個「place|地方」上的東北方的一區塊。
 
-% \begin{figure}[!htbp]
-% \centering
-% \includegraphics[width = \textwidth]{figures/spatialpreposition.png}
-% \caption{空間介詞與方位詞之語意圖(改自\citet{RN45})}
-% \label{fig:spatialpreposition}
-% \end{figure}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/spatialpreposition.png}
+\caption{空間介詞與方位詞之語意圖(改自\citet{RN45})}
+\label{fig:spatialpreposition}
+\end{figure}
 
 
 綜合上述討論，圖10顯示本研究發展之位置描述知識本體的空間介詞與方位詞及其概念串接至上層知識本體的結構。詳細來說，在\textit{locd:SpatialConcpet} (空間概念)下記錄\textit{locd:SpatialRelationship} (空間關係)，依據E-HowNet之定義可再進一步細分為三個主要與位置表達相關的類別，分別為\textit{ehn:LocationFunction} (位置函數)、\textit{ehn:DistanceValue}和\textit{ehn:AlterLocation} (變空間位置)。
