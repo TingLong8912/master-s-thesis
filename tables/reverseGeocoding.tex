@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{逆向地理編碼範例}
+\label{tab:reverseGeocodingAPI}
+\begin{adjustbox}{max width=\textwidth}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{>{\centering\arraybackslash}m{3cm} >{\centering\arraybackslash}m{7.5cm} >{\centering\arraybackslash}m{2.5cm} >{\centering\arraybackslash}m{5cm}}
+\Xhline{1.2pt} 
+使用服務 & 結果 & 等級 & 備註 \\
+\Xhline{1.2pt}
+Google Reverse Geocoding & No. 45 號, Section 5, Xinyi Rd, Xinyi District, Taipei City, Taiwan 110 & address & 台北101門牌號碼為7號，故定位精準度不甚準確 \\
+\hline
+OSM Nominatim & 7 號, Section 5, Xinyi Road, Xicun Village, Xinyi District, Xinyi Commercial Zone, Taipei, 11049, Taiwan & address & 可進一步從OSM物件查詢結果中取得「Building」等其他 tag 資訊 \\
+\hline
+ArcGIS REST APIs reverseGeocode & 台 北 市 信 義 區 信 義 路五段 7 號 台北德式診所 信義路五段 & address & 可依照需求選擇參數，例如：address或POI，獲得結果 \\
+\Xhline{1.2pt} 
+\end{tabular}
+\end{adjustbox}
+\end{table}

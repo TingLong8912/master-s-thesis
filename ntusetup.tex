@@ -7,42 +7,59 @@
 \ntusetup{
   university*   = {National Taiwan University},
   university    = {國立臺灣大學},
-  college       = {工學院},
-  college*      = {College of Engineering},
-  institute     = {工業工程學研究所},
-  institute*    = {Institute of Industrial Engineering},
-  title         = {國立臺灣大學碩博士畢業論文模版},
-  title*        = {National Taiwan University (NTU) \\ Thesis/Dissertation Template in \LaTeX},
-  author        = {彭新翔},
-  author*       = {Hsin-Hsiang Peng},
-  ID            = {R05546030},
-  advisor       = {吳文方},
-  advisor*      = {Wen-Fang Wu},
-  date          = {2020-05-01},         % 若註解掉，則預設為當天
-  oral-date     = {2020-05-01},         % 若註解掉，則預設為當天
+  college       = {理學院},
+  college*      = {College of Science},
+  institute     = {地理環境資源學系},
+  institute*    = {Department of Poliotical Science},
+  title         = {基於知識本體之語意式位置描述},
+  title*        = {The Ontology based Semantic Location Description},
+  author        = {顏廷龍},
+  author*       = {Ting-Long, Yan},
+  ID            = {R12228013},
+  advisor       = {郭巧玲},
+  advisor*      = {Chiao-Ling Kuo},
+  coadvisor    = {林楨家},
+  coadvisor*   = {Jen-Jia Lin},
+  date          = {2025-08-01},         % 若註解掉，則預設為當天
+  oral-date     = {2025-08-01},         % 若註解掉，則預設為當天
   DOI           = {10.5566/NTU2018XXXXX},
-  keywords      = {LaTeX, 中文, 論文, 模板},
-  keywords*     = {LaTeX, CJK, Thesis, Template},
+  keywords      = {位置描述、空間語意、知識本體(Ontology)、語意網規則語言(Semantic Web Rule Language, SWRL)、空間認知},
+  keywords*     = {location description, spatial semantics, Ontology, Semantic Web Rule Language (SWRL), spatial cognition},
 }
 
 % --------------------------------------------------
 % 加載套件（Include Packages）
 % --------------------------------------------------
 
-\usepackage[sort&compress]{natbib}      % 參考文獻
-\usepackage{amsmath, amsthm, amssymb}   % 數學環境
-\usepackage{ulem, CJKulem}              % 下劃線、雙下劃線與波浪紋效果
-\usepackage{booktabs}                   % 改善表格設置
-\usepackage{multirow}                   % 合併儲存格
-\usepackage{diagbox}                    % 插入表格反斜線
-\usepackage{array}                      % 調整表格高度
-\usepackage{longtable}                  % 支援跨頁長表格
+\usepackage[style = apa, 
+            backend = biber, 
+            natbib]{biblatex}           % 參考文獻      
 \usepackage{paralist}                   % 列表環境
-
-
 \usepackage{lipsum}                     % 英文亂字
 \usepackage{zhlipsum}                   % 中文亂字
+\usepackage{url}
+\usepackage{adjustbox}                  % 圖表縮放
+\usepackage{threeparttable}             % 複雜圖表環境
+\usepackage{rotating}                   % 表格水平轉置
+\usepackage{tablefootnote}              % 表格內註解
+\usepackage{xcolor}                     % 顏色RGB
+\usepackage{tikz}                       % LaTeX畫圖
+\usepackage{makecell}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{array}
+\usepackage{booktabs}
+
+% \usepackage[capposition = top]{floatrow}
 
 % --------------------------------------------------
 % 套件設定（Packages Settings）
 % --------------------------------------------------
+
+\addbibresource{back/references.bib}         % 參考文獻資源庫
+\usetikzlibrary{shapes, arrows, positioning} % LaTeX畫圖資源庫
+
+% 自調表格種類
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
