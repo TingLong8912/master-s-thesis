@@ -2,11 +2,18 @@
 
 \chapter{研究方法}
 
-本研究提出一個基於知識本體的語意位置描述三層式架構(ontology based semantic location description framework, O-SLD framework)，旨在整合空間資料與自然語言中的位置描述語意，建構具有語意表達能力的位置描述之知識模型。透過本框架，期望為位置描述中的語意提供形式化模型，並強化空間資料、空間認知與自然語言之間的語意連結與互通性。在3.1節中，說明位置描述語意(O-SLD)三層式架構之設計，以達成空間資料、位置語意與位置詞彙的連結；在3.2節說明位置描述知識本體建構原則與內容架構；在3.3節描述規則設計準則及機制，以實現語意式位置描述的動態產生能力；在3.4節說明本研究評估方法，將採用SPICE(Semantic Propositional Image Caption Evaluation)作為評估指標。
+本研究提出一個基於知識本體的語意位置描述三層式架構(ontology based semantic location description framework, O-SLD framework)，旨在整合空間資料與自然語言中的位置描述語意，建構具有語意表達能力的位置描述之知識模型。圖 \ref{fig:framework} 顯示本研究架構，係結合知識本體、語意規則和圖資達成逆向地理編碼機制。透過本框架，期望為位置描述中的語意提供形式化模型，並強化空間資料、空間認知與自然語言之間的語意連結與互通性。在3.1節中，說明位置描述語意(O-SLD)三層式架構之設計，以達成空間資料、位置語意與位置詞彙的連結；在3.2節說明位置描述知識本體建構原則與內容架構；在3.3節描述規則設計準則及機制，以實現語意式位置描述的動態產生能力；在3.4節說明本研究評估方法，將採用SPICE(Semantic Propositional Image Caption Evaluation)作為評估指標。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = 0.7\textwidth]{figures/research_framework.png}
+\caption{研究架構圖}
+\label{fig:framework}
+\end{figure}
 
 \section{位置描述語意(O-SLD)三層式架構設計}
 
-為回應空間認知理論對人類位置理解的需求，並解決位置描述語意表徵上的挑戰，本研究設計了O-SLD三層式架構。該框架透過語意推理機制，能進一步從空間資料產生位置語意及語意式位置描述，能達成逆向地理編碼任務。框架的結構如\ref{fig:three-layered}所示，O-SLD三層式架構主要由三個層級組成：資料層、語意層和自然語言層。三層之間呈現自上而下的語意映射關係，分別對應空間資料、知識本體與語言表達，透過語意規則加以串連各層級，形成完整的語意推論機制。
+為回應空間認知理論對人類位置理解的需求，並解決位置描述語意表徵上的挑戰，本研究設計了O-SLD三層式架構。該框架透過語意推理機制，能進一步從空間資料產生位置語意及語意式位置描述，能達成逆向地理編碼任務。框架的結構如 \ref{fig:three-layered} 所示，O-SLD三層式架構主要由三個層級組成：資料層、語意層和自然語言層。三層之間呈現自上而下的語意映射關係，分別對應空間資料、知識本體與語言表達，透過語意規則加以串連各層級，形成完整的語意推論機制。
 
 \begin{figure}[!htbp]
 \centering
@@ -25,17 +32,38 @@
 
 \section{位置描述知識本體(location description ontology, LocD)}
 
-本研究採用常見的知識本體建構過程METHONTOLOGY\citep{RN143}，其建構過程包含需求規範、知識獲取、概念化、整合、實作與評估等七個階段，用以建立任務為導向的位置描述知識本體(LocD)。
+本研究採用常見的知識本體建構過程METHONTOLOGY\citep{RN143}，其建構過程包含需求規範、知識獲取、概念化、整合、實作與評估等七個階段，用以建立任務為導向的位置描述知識本體(LocD)。圖 \ref{fig:locd_framework} 所示為本研究發展之LocD知識本體之框架，係結合上層知識本體及橋接之知識本體，以達成位置描述中的語意表達。
 
 本節首先說明所使用之上層知識本體，以提供在語意領域中整合基礎及互通能力，亦能有效降低語意重複與歧異產生。其次，說明位置描述知識本體中兩個子集結構：「圖徵及性質」和「位置描述與空間概念」。前者對應O-SLD三層式架構中的「資料層」，旨在定義空間資料如何介接知識本體，例如「台灣大學」作為Feature，存在幾何類型—「面」、名稱—「台灣大學」和類型—「大學」等資訊，這些資訊將分別記錄於「圖徵與性質」之子集中。同時，輸入圖徵與參考圖徵產生的空間操作(spatial operation)結果也將記錄於其下；後者則對應O-SLD三層式架構中的「自然語言層」，旨在定義位置描述語言中的空間介詞與方位詞，並賦予其對應之語意空間關係。這些語意元素分別記錄在「位置描述與空間概念」之子集中，進一步支持位置描述文字的語意。
 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = 0.7\textwidth]{figures/Locd_framework.png}
+\caption{位置描述知識本體框架}
+\label{fig:locd_framework}
+\end{figure}
+
 \subsection{上層知識本體}
 
-達成語意互通，本研究採用三個上層知識本體框架進行知識本體建構的整合既有知識(如圖3所示)，分別為：Descriptive Ontology for Linguistic and Cognitive Engineering (DOLCE)、GeoSPARQL Ontology和廣義知網知識本體(Extended-HowNet Ontology, E-HowNet ontology)。位置描述的產生過程以空間認知的三個核心概念構成其基本結構，分別為Feature (\textit{dul:Feature})、空間概念(\textit{locd:SpatialConcept})及位置描述(\textit{locd:LocationDescription})。此外，形塑空間概念的組成元素則記錄於性質(\textit{dul:Quality})之下，使得知識本體可涵蓋空間認知過程形成位置描述的關鍵特徵，並有助於各個子類語意關係明確化。上層知識本體的引入，係基於該結構之考量，以下詳述個別內容：
+達成語意互通，本研究採用三個上層知識本體框架進行知識本體建構的整合既有知識(參見圖 \ref{fig:locd_top} )，分別為：Descriptive Ontology for Linguistic and Cognitive Engineering (DOLCE)、GeoSPARQL Ontology和廣義知網知識本體(Extended-HowNet Ontology, E-HowNet ontology)。位置描述的產生過程以空間認知的三個核心概念構成其基本結構，分別為Feature (\textit{dul:Feature})、空間概念(\textit{locd:SpatialConcept})及位置描述(\textit{locd:LocationDescription})。此外，形塑空間概念的組成元素則記錄於性質(\textit{dul:Quality})之下，使得知識本體可涵蓋空間認知過程形成位置描述的關鍵特徵，並有助於各個子類語意關係明確化。上層知識本體的引入，係基於該結構之考量，以下詳述個別內容：
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/LocD_top_level.png}
+\caption{位置描述知識本體上層架構}
+\label{fig:locd_top}
+\end{figure}
 
 \subsubsection{Descriptive Ontology for Linguistic and Cognitive Engineering (DOLCE)}
 
-為建構具語意推理能力和整合不同領域的位置語意資訊的的位置描述知識本體，本研究採用經邏輯語言公理化(axiomatized)的上層知識本體 DOLCE作為語意架構基礎，其實體分類系統與性質描述機制可有效支持位置語意的建模與跨領域整合(參見圖4)。
+為建構具語意推理能力和整合不同領域的位置語意資訊的的位置描述知識本體，本研究採用經邏輯語言公理化(axiomatized)的上層知識本體 DOLCE作為語意架構基礎，其實體分類系統與性質描述機制可有效支持位置語意的建模與跨領域整合(參見圖 \ref{fig:dolce} )。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/dolce.png}
+\caption{DOLCE的分類法}
+\label{fig:dolce}
+\end{figure}
 
 DOLCE旨在基於認知和語言考量來建立一個人類日常所使用和理解的事物之常識模型作為一個基礎知識本體，核心目的是提供一般性的範疇和關係，以建構一個連貫的現實理解框架\citep{RN86}。同時，DOLCE已廣泛應用於社會技術系統、製造業、金融交易和文化遺產等領域，在地理資訊領域中，亦透過DOLCE建立跨領域術語與知識結構，支援不同領域間的語意中\citep{RN195, RN193}。
 
@@ -51,7 +79,14 @@ DOLCE旨在基於認知和語言考量來建立一個人類日常所使用和理
 
 為確保空間資料的可解釋性與可互操作性，本研究將 GeoSPARQL作為表達空間資料幾何特徵與空間操作的主要語意框架，並結合 DOLCE進一步提升位置語意推理的能力。
 
-GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)所制定的語意網標準，旨在表達空間資訊支援查詢與推理(參見圖 5)。其定義了「Feature(圖徵)」、「Geometry(幾何)」等類別，前者代表特定論域中的離散的空間現象，不論其是否有明確邊界，其皆具有可識別性，例如：行政區界、山脈及颱風等；而後者為在空間中一組連貫的直接位置，這些位置存在於空間參考系統內，用來表達Feature的幾何表現(例如形狀、範圍或位置)。
+GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)所制定的語意網標準，旨在表達空間資訊支援查詢與推理(參見圖 \ref{fig:geosparql} )。其定義了「Feature(圖徵)」、「Geometry(幾何)」等類別，前者代表特定論域中的離散的空間現象，不論其是否有明確邊界，其皆具有可識別性，例如：行政區界、山脈及颱風等；而後者為在空間中一組連貫的直接位置，這些位置存在於空間參考系統內，用來表達Feature的幾何表現(例如形狀、範圍或位置)。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = 0.7\textwidth]{figures/geosparql.png}
+\caption{GeoSPARQL Ontology的基礎類別及屬性}
+\label{fig:geosparql}
+\end{figure}
 
 除了基本結構定義外，GeoSPARQL亦擴展了空間關係的描述能力，納入以DE-9IM (Dimensionally Extended Nine-Intersection Model)為基礎所建構的拓撲關係(topological relation)，包含：「equals(相等)」、「disjoint(不相交)」、「intersects(相交)」、「touches(接觸)」、「within(內含於)」、「contains(包含)」、「overlaps(交疊)」和「crosses(橫越)」。
 
@@ -77,7 +112,14 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 同時，性質可進一步區分為物理性質(\textit{dul:PhysicalQuality})及抽象性質(\textit{dul:AbstractQuality})。其中，非物理性持續體僅能擁有抽象性質，而物理性持續體不在此限，除物理性質外，亦可擁有抽象性質。例如：「台北101」作為一個物理存在的建築物，除了高度、位置等物理屬性，亦可具有地標、社經中心等抽象性質。
 
-為增加性質的語意描述能力，本研究引用\citet{RN39}提出的地方面向(place facet)架構，以此為基礎發展知識本體中的\textit{dul:Quality}子類。地方面向係指地方的類型資訊，用以探討地方這一模糊概念的具體形式化結構。在本研究中，將四個子類置於性質底下，並以物理與非物理作為區分。舉例而言，人類中心面向(\textit{dul:AnthropocentricFacet})、衍生性面向(d\textit{ul:DerivedFacet})和語言面向(\textit{dul:LinguisticFacet})為抽象性質(\textit{dul:AbstractQuality})的子類，而具有具體的空間及物理屬性的地理面向(\textit{dul:GeographicFacet})則為物理性質(\textit{dul:PhysicalQuality})的子類，以作為\textit{dul:Quality}的細化分類，以強化對Feature在其屬性資料上的語意表達(參見圖 6)。
+為增加性質的語意描述能力，本研究引用\citet{RN39}提出的地方面向(place facet)架構，以此為基礎發展知識本體中的\textit{dul:Quality}子類。地方面向係指地方的類型資訊，用以探討地方這一模糊概念的具體形式化結構。在本研究中，將四個子類置於性質底下，並以物理與非物理作為區分。舉例而言，人類中心面向(\textit{dul:AnthropocentricFacet})、衍生性面向(d\textit{ul:DerivedFacet})和語言面向(\textit{dul:LinguisticFacet})為抽象性質(\textit{dul:AbstractQuality})的子類，而具有具體的空間及物理屬性的地理面向(\textit{dul:GeographicFacet})則為物理性質(\textit{dul:PhysicalQuality})的子類，以作為\textit{dul:Quality}的細化分類，以強化對Feature在其屬性資料上的語意表達(參見圖 \ref{fig:locd_quality} )。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/LocD_quality.png}
+\caption{位置描述知識本體子集：圖徵與性質}
+\label{fig:locd_quality}
+\end{figure}
 
 更詳細來說，第一階層為原始面向(primitive facets)、衍生性面向(derived facet)和語言面向(linguistic facet)，衍生性面向是由不同原始面向的組合中產生。例如，衍生性面相中的子類類型(typology)與個人或社會提供的目的和目標直接相關，情感、功能、物理和空間等多個原始面向共同構成了對一個地方作為特定類型的描述。
 
@@ -85,7 +127,9 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 最後，有別於前述地方本身的特性，語言面向係為地方的指稱，使人們能夠溝通和分享關於地方的知識，為表達情感意義或談論地方的功能和物理特徵的渠道，其子類包含：地名(toponyms)、口語指稱(verbal reference)和本研究關注的位置描述。
 
-表5列出關於圖徵與性質之分類與應用，整理了相關類別、定義及範例，詳細解釋如下：表中的「類別」欄位對應知識本體中的「類別」，「類型」則分為圖徵與性質兩大類，並且包含每個類別的定義、說明及範例。以第一欄為例，\textit{locd:FigureFeature}表示在知識本體中存在該類別，並且位於「Feature」類別下，定義為「圖圖徵」，指的是圖徵中的定位物或目標物件，例如：「台灣大學位於羅斯福路上」中的「台灣大學」即為一個\textit{locd:FigureFeature}的實例。
+表 \ref{tab:quality} 列出關於圖徵與性質之分類與應用，整理了相關類別、定義及範例，詳細解釋如下：表中的「類別」欄位對應知識本體中的「類別」，「類型」則分為圖徵與性質兩大類，並且包含每個類別的定義、說明及範例。以第一欄為例，\textit{locd:FigureFeature}表示在知識本體中存在該類別，並且位於「Feature」類別下，定義為「圖圖徵」，指的是圖徵中的定位物或目標物件，例如：「台灣大學位於羅斯福路上」中的「台灣大學」即為一個\textit{locd:FigureFeature}的實例。
+
+\input{tables/quality.tex}
 
 \subsubsection{類型}
 
@@ -97,7 +141,14 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 \subsubsection{GIS空間操作}
 
-在GIS中，空間操作(\textit{locd:SpatialOperatio})是處理和分析空間資料的關鍵技術。其中，拓樸(topology)、距離(distance)和方位(direction)關係是描述Features間的常見概念和分類(參見圖 7)，本小節將詳細介紹這三類空間操作的定義與範疇。
+在GIS中，空間操作(\textit{locd:SpatialOperatio})是處理和分析空間資料的關鍵技術。其中，拓樸(topology)、距離(distance)和方位(direction)關係是描述Features間的常見概念和分類(參見圖 \ref{fig:locd_spatialoperation} )，本小節將詳細介紹這三類空間操作的定義與範疇。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/LocD_spatialoperation.png}
+\caption{位置描述知識本體子集：空間操作}
+\label{fig:locd_spatialoperation}
+\end{figure}
 
 第一，拓樸關係係描述空間物件之間的相對的定性特性，包含相交、重疊和包含等特性。常見的拓樸關係透過維度延伸九交集模型(Dimensionally Extended Nine-Intersection Model, DE-9IM)形式化表示之，並廣泛應用在GIS的空間查詢與分析。第二，方位關係描述物件置於其他物件的相對方向，通常以方位角或羅盤方位來表達。常見的方位關係描述途徑有以下：方位矩陣模型(Direction Relation Matrix, DRM)透過矩陣方式表示物件之間的相對方向，如左、右、上、下\citep{RN183}；基於象限的方向模型，將空間劃分為四象限(即東北、西北、東南、西南)或八方位(即北、東北、東、東南、南、西南、西、西北)來描述物件間的方向關係；角度計算則是使用數學方式計算兩點之間的方位角，適用於路徑分析與導航應用。第三，距離關係用於衡量空間物件之間的相對位置，以數值方式描述它們的接近程度。
 
@@ -124,6 +175,7 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 \label{fig:spatialpreposition}
 \end{figure}
 
+\input{tables/wordList.tex}
 
 綜合上述討論，圖10顯示本研究發展之位置描述知識本體的空間介詞與方位詞及其概念串接至上層知識本體的結構。詳細來說，在\textit{locd:SpatialConcpet} (空間概念)下記錄\textit{locd:SpatialRelationship} (空間關係)，依據E-HowNet之定義可再進一步細分為三個主要與位置表達相關的類別，分別為\textit{ehn:LocationFunction} (位置函數)、\textit{ehn:DistanceValue}和\textit{ehn:AlterLocation} (變空間位置)。
 
@@ -131,7 +183,9 @@ GeoSPARQL Ontology由開放地理空間協會(Open Geospatial Consortium, OGC)�
 
 \section{空間認知三階段規則}
 
-為了實現位置描述的自動化從空間資料中產生，本研究建構明確且可執行的空間認知三階段規則。這些規則能夠係透過位置描述知識本體橋接O-SLD三層式框架，進而支持情境感知的語意推論與產生語意式的位置描述。在本研究的建構之規則知識，以語意網規則語言(semantic web rule language, SWRL)的方式紀錄，並分為三個階段：情境影響參考物、資料層到語意層和語意層到自然語言層(參見表 8)，這三個階段共同構成一套可擴充且具備語意解釋能力的推論框架，為後續位置詞彙的生成提供知識基礎。
+為了實現位置描述的自動化從空間資料中產生，本研究建構空間認知三階段規則。這些規則能夠係透過位置描述知識本體橋接O-SLD三層式框架的前後兩層，進而支持情境感知的語意推論與產生語意式的位置描述。在本研究的建構之規則知識，以語意網規則語言(semantic web rule language, SWRL)的方式紀錄，並分為：情境影響參考物、資料層到語意層和語意層到自然語言層三階段，\ref{tab:ruleDemo}為簡單範例顯示這三個階段如何構成一套可擴充且具備語意解釋能力的推論框架，為後續位置詞彙的生成提供知識基礎，本節將詳細說明三個階段的設計準則與內容。
+
+\input{tables/ruleDemo.tex}
 
 \subsection{情境影響參考物選擇}
 
@@ -195,11 +249,34 @@ OnSite(?rel)^LocationDescription(?locad)
 
 \section{情境分析}
 
-在交通相關的情境中，知識本體需能表示的不僅是道路的類型，還包括道路段、交叉路口與附屬設施。為了回應真實世界情境與領域語意的需求，本研究個案擴充了LocD本體，納入更細緻的道路網系統分類，這在交通情境中扮演關鍵角色。
+在近幾年對於防救災的重視與體制發展下，「如何將以坐標記錄的圖徵位置轉化為人類可理解的語言描述」已成為災害傳達與決策的重要課題。本研究聚焦兩個諸如防救災等需及時提供文字式位置描述傳達給民眾或有關單位的應用情境，分別為：交通情境和災防告警，以探討語意式位置描述在實務中的角色和挑戰。
 
-知識本體中空間要素的基本分類依據內政部發布的《地形圖資分類架構》。為了彌合通用分類與情境中領域專屬類型間的落差，本研究引入交通部發布之《交通網路基本資料標準（第一版）》，該標準定義了臺灣交通系統的結構。此分類已整合至LocD本體作為其子結構，如圖六所示。
+首先，在交通情境中，如警察廣播電台所建置的即時路況系統，即爲一種群眾參與的語意式位置回報機制。透過設有路況服務專線，接受民眾提供的路況，提供了事故、交通壅塞和道路施工等主題之路況描述(警察廣播電臺, 2021)。除了路況說明，也包含了自然語言文字式的空間位置與地點描述及坐標資訊，當中的位置描述以自然語言傳達可使民眾更快速且直觀理解位置所在，而不需額外讀地圖和理解圖徵及圖幅方位等地圖意涵，提供位置理解速度與傳播效率。
 
-這些交通情境與對應的參考物件也進一步連結至第 3.3 節所述的具情境感知之推論規則，使系統在語意推理過程中能動態決定符合情境的參考物件。基於警察廣播電台（PBS）提供的 2,000 筆即時交通通報資料，本研究應用實體命名辨識（NER）技術，將原始的非結構化資料轉換為結構化格式，並進行本體語意標註，藉此識別在交通語境中常被使用的參考物件類型。
+其次，在災防告警情境中，常見例如災防告警細胞廣播訊息係透過經緯度記錄之空間幾何決定其發布範圍，即手機使用在該範圍內基地台的民眾會收到細胞廣播，為使民眾快速了解發生地點或影響地點，在訊息中會附帶上位置描述(張子瑩等人., 2016)。例如，在地震速報一類中會放上「東北海域」等描述，在大雷雨訊息中會以「您所在地」提醒民眾位於何處。其中，「東北海域」這一描述是基於與台灣本島的空間方位關係而產生，在目前的機制下除事先建構地名辭典，否則無法產生。
+
+上述兩個案例凸顯語意式位置描述在防救災資訊傳遞與空間理解中的實用性與必要性，同時也顯示出現行機制在語意生成與對應規則上的不足之處，為本研究提供了具體的問題場域與應用動機。
+
+圖 \ref{fig:context_steps} 顯示情境分析步驟，分別為LocD知識本體擴展、情境關聯之規則定義和樣板設計，本節將詳細說明兩個情境中的三個工作流。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/conext_steps.png}
+\caption{情境分析流程}
+\label{fig:context_steps}
+\end{figure}
+
+\subsection{交通情境}
+
+\subsubsection{LocD知識本體擴展}
+
+在交通相關的情境中，知識本體需表示的不僅是道路的類型，還包括道路段、交叉路口與附屬設施。為了回應真實世界情境與領域語意的需求，本研究個案擴充了LocD知識本體，納入更細緻的道路網系統分類，這在交通情境中扮演關鍵角色。
+
+知識本體中空間物件的「類別」係依據內政部發布的《地形圖資分類架構》，為了彌合通用分類與情境中領域專屬類型間的落差，本研究引入交通部發布之《交通網路基本資料標準（第一版）》，該標準定義了臺灣交通系統的結構。此分類已整合至LocD知識本體作為其子結構，如圖六所示。
+
+\subsubsection{情境關聯之規則定義}
+
+這些交通情境與對應的參考物件也進一步連結至第 3.3 節所述的具情境感知之推論規則，使系統在語意推理過程中能動態決定符合情境的參考物件。基於警察廣播電台提供的 2,000 筆即時交通通報資料，本研究使用實體命名辨識(named entity recognition, NER)技術，將原始的非結構化資料轉換為結構化格式，並進行語意標註(semantic annotation)，藉此識別在交通語境中常被使用的參考物件類型。
 
 \begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
 SpatialOperation(?rel)^hasContext(?rel, ?ctx)^Traffic(?ctx)
@@ -209,11 +286,36 @@ SpatialOperation(?rel)^hasContext(?rel, ?ctx)^Traffic(?ctx)
 ^GroundFeature(?f)^hasGroundFeature(?rel, ?f)
 \end{lstlisting}
 
+\subsubsection{樣板設計}
+
+\subsection{災防告警情境}
+
+\subsubsection{LocD知識本體擴展}
+
+\subsubsection{情境關聯之規則定義}
+
+\subsubsection{樣板設計}
+
 
 \section{評估方法}
 本研究採用SPICE(Semantic Propositional Image Caption Evaluation)作為評估指標\citep{RN29}，以衡量機制產生之候選描述與參考描述之間的語意對齊程度。相較於傳統以字串層級為主的評估指標(如BLEU和ROUGE)，或近年來基於大型語言模型之語意層級評估指標(如BERTScore)，SPICE 能更準確反映語句的語意結構及實體匹配，適合本研究所關注之語意式位置描述任務。
 
-SPICE主要以F1 score作為核心指標，綜合考量語意單元的準確率(Precision)與召回率(Recall)。語意單元係指候選與參考描述文字透過語意場景圖(semantic scene graphs)分析後所產生的三元組(triple)集合，其形式為「(object)」、「(object, attribute)」、「(object, relation, object)」三者。其中，準確率表示機制產生的語意單元中，有多少與參考描述一致；召回率則反映參考描述中的語意單元，有多少被機制成功捕捉；F1 分數則為兩者的調和平均，用以綜合評估語意重合程度。其數學定義如下(式1-1至1-3)，其中準確率為$P$、召回率為$R$，$c$為候選文字、$S$為參考文字、$T(G(c))$為候選三元組集合、$T(G(S))$為參考三元組集合，而$\otimes$意味集合匹配與否。
+SPICE主要以F1 score作為核心指標，綜合考量語意單元的準確率(Precision)與召回率(Recall)。語意單元係指候選與參考描述文字透過語意場景圖(semantic scene graphs)分析後所產生的三元組(triple)集合，其形式為「(object)」、「(object, attribute)」、「(object, relation, object)」三者。其中，準確率表示機制產生的語意單元中，有多少與參考描述一致；召回率則反映參考描述中的語意單元，有多少被機制成功捕捉；F1 分數則為兩者的調和平均，用以綜合評估語意重合程度。其數學定義如下(式 \ref{eq:spice_p} 、 \ref{eq:spice_r} 和 \ref{eq:spice_f1} )，其中準確率為$P$、召回率為$R$，$c$為候選文字、$S$為參考文字、$T(G(c))$為候選三元組集合、$T(G(S))$為參考三元組集合，而$\otimes$意味集合匹配與否。
+
+\begin{equation}
+\label{eq:spice_p}
+P(c,S) = \frac{\left| T(G(c)) \otimes T(G(S)) \right|}{\left| T(G(c)) \right|}
+\end{equation}
+
+\begin{equation}
+\label{eq:spice_r}
+R(c,S) = \frac{\left| T(G(c)) \otimes T(G(S)) \right|}{\left| T(G(S)) \right|}
+\end{equation}
+
+\begin{equation}
+\label{eq:spice_f1}
+SPICE(c,S) = F_1(c,S) = \frac{2 \times P(c,S) \times R(c,S)}{P(c,S) + R(c,S)}
+\end{equation}
 
 在本研究之任務中，語意單元統一定義為「(空間介詞, 地點名稱, 方位詞)」之三元組形式，例如：位置描述「在中山高速公路上」將被轉換為「(在, 中山高速公路, 上)」的三元組。為確保評估準確性與參考資料的一致性，本研究之參考描述之真值(ground truth)經由個案分析後人工標記產生，經人工語意理解後轉換為三元組形式。
 

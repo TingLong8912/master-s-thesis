@@ -1,0 +1,81 @@
+{\footnotesize
+\renewcommand{\arraystretch}{0.8}
+\begin{longtable}{
+  >{\centering\arraybackslash}m{1cm} % 第一欄寬 1cm，水平置中且垂直置中
+  >{\centering\arraybackslash}m{1cm} % 第二欄
+  >{\arraybackslash}m{6cm}            % 第三欄，垂直置中，水平靠左
+  >{\arraybackslash}m{3cm}            % 第四欄
+  >{\arraybackslash}m{2cm}            % 第五欄
+}
+\caption{空間介詞與方位詞列表} \label{tab:wordList} \\
+\toprule
+詞彙 & 詞性 & E-HowNet表達式 & 詞意 & 空間介詞／方位詞 \\
+\toprule
+\endfirsthead
+\toprule
+詞彙 & 詞性 & E-HowNet表達式 & 詞意 & 空間介詞／方位詞 \\
+\toprule
+\endhead
+\bottomrule
+\endlastfoot
+在 & P & location=\{\} & in, at, on, etc. & at(在) \\ \hline
+外 & Ncda & \{external|外\} & outside & out(外) \\ \hline
+中 & Ncdb & \{internal|內\} & inside & in(裡) \\ \hline
+上 & Ncda & \{upper|上\} & on, above & on, above \\ \hline
+下 & Ncda & \{beneath|下\} & below, under, underneath & down, below \\ \hline
+前 & Ncda & \{InFront|前\} & front & front \\ \hline
+後 & Ncda & \{hide|後\} & rear, back, behind & behind \\ \hline
+左 & Ncda & \{left|左\} & left side, east, the Left & left \\ \hline
+右 & Ncda & \{right|右\} & right side, the Right, west & right \\ \hline
+北 & Ncda & \{north|北\} & north & North \\ \hline
+西 & Ncda & \{west|西\} & west & West \\ \hline
+東 & Ncda & \{east|東\} & east & East \\ \hline
+南 & Ncda & \{south|南\} & south & South \\ \hline
+面 & Ncda & \{surface|表層\} & surface, top, face & side, face \\ \hline
+邊 & Ncda & \{edge(\{place|地方\})\} & border, boundary & side \\ \hline
+上部 & Ncdb & \{TopPart|頂端\} & upper part, volume 1 & part \\ \hline
+頂部 & Ncdb & \{TopPart|頂端\} & top & \\ \hline
+底部 & Ncdb & \{BasePart|底部\} & bottom & \\ \hline
+末端 & Ncdb & \{EndPart|尾部\} & tip, end & \\ \hline
+中北部 & Ncdb & \{NorthPart(\{CentrePart(\{place|地方\})\})\} & midnorth & \\ \hline
+中南部 & Ncdb & \{SouthPart(\{CentrePart(\{place|地方\})\})\} & middle and southern part & \\ \hline
+中西部 & Ncdb & \{WestPart(\{CentrePart(\{place|地方\})\})\} & midwest & \\ \hline
+中部 & Ncdb & \{CentrePart(\{place|地方\})\} & midland, central section & \\ \hline
+北部 & Ncdb & \{NorthPart(\{place|地方\})\} & northern part & \\ \hline
+南部 & Ncdb & \{SouthPart(\{place|地方\})\} & southern part & \\ \hline
+東北部 & Ncdb & \{NorthPart(\{EastPart(\{place|地方\})\})\} & northeast & \\ \hline
+東南部 & Ncdb & \{SouthPart(\{EastPart(\{place|地方\})\})\} & southeast & \\ \hline
+東部 & Ncdb & \{EastPart(\{place|地方\})\} & east & \\ \hline
+西北部 & Ncdb & \{NorthPart(\{WestPart(\{place|地方\})\})\} & northwest & \\ \hline
+西南部 & Ncdb & \{SouthPart(\{WestPart(\{place|地方\})\})\} & southwest & \\ \hline
+西部 & Ncdb & \{WestPart(\{place|地方\})\} & western part & \\ \hline
+上游 & Ncb & \{TopPart(\{河|river\})\} & upper reaches of river & \\ \hline
+中下游 & Ncb & \{union(\{CentrePart(\{河|river\})\},\{EndPart(\{河|river\})\})\} & middle and lower reaches & \\ \hline
+中游 & Ncb & \{CentrePart(\{河|river\})\} & middle reaches & \\ \hline
+下游 & Ncb & \{EndPart(\{河|river\})\} & lower reaches & \\ \hline
+左端 & Ncdb & \{EndPart(\{object|物體\}):position=\{left|左\}\} & left end & \\ \hline
+右端 & Ncdb & \{EndPart(\{object|物體\}):position=\{right|右\}\} & right end & \\ \hline
+北端 & Ncdb & \{EndPart(\{object|物體\}):position=\{north|北\}\} & northern end & \\ \hline
+西端 & Ncdb & \{EndPart(\{object|物體\}):position=\{west|西\}\} & west end & \\ \hline
+南端 & Ncdb & \{EndPart(\{object|物體\}):position=\{south|南\}\} & south end & \\ \hline
+東北端 & Ncdb & \{EndPart(\{place|地方\}):position=\{north(\{east|東\})\}\} & northeast end & \\ \hline
+東南端 & Ncdb & \{EndPart(\{place|地方\}):position=\{south(\{east|東\})\}\} & southeast end & \\ \hline
+西北端 & Ncdb & \{EndPart(\{place|地方\}):position=\{west(\{north|北\})\}\} & northwest end & \\ \hline
+西南端 & Ncdb & \{EndPart(\{place|地方\}):position=\{west(\{south|南\})\}\} & southwest end & \\ \hline
+方 & Ncda & \{place|地方\} & direction, place, region & direction, axis \\ \hline
+東方 & Ncdb & \{east|東\} & eastern & \\ \hline
+東邊 & Ncdb & \{east|東\} & east & \\ \hline
+東西方 & Ncdb & \{union(\{east|東\},\{west|西\})\} & east and west & \\ \hline
+西方 & Ncdb & \{west|西\} & western & \\ \hline
+西邊 & Ncdb & \{west|西\} & west side & \\ \hline
+北方 & Ncdb & \{north|北\} & north, northern area & \\ \hline
+東北方 & Ncdb & \{north(\{east(\{object|物體\})\})\} & northeastward & \\ \hline
+南方 & Ncdb & \{south|南\} & southern & \\ \hline
+東南方 & Ncdb & \{south(\{east(\{object|物體\})\})\} & southeastward & \\ \hline
+右方 & Ncdb & \{right|右\} & the right side & \\ \hline
+左方 & Ncdb & \{left|左\} & the left side & \\ \hline
+上方 & Ncdb & \{upper|上\} & above, on top & \\ \hline
+下方 & Ncdb & \{beneath|下\} & below, lower & \\ \hline
+前方 & Ncdb & \{InFront|前\} & ahead, front direction & \\
+\end{longtable}
+}

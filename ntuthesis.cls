@@ -624,6 +624,9 @@
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[sub]{skip=6bp}
 
+\renewcommand{\figurename}{圖}
+\renewcommand{\tablename}{表}
+
 % --------------------------------------------------
 % 08 自訂命令（Custom Commands）
 % --------------------------------------------------

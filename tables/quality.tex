@@ -1,0 +1,55 @@
+\begin{table}[htbp]
+\centering
+\caption{圖徵與性質的類別、定義及範例}
+\label{tab:quality}
+\begin{adjustbox}{max width=\textwidth}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{>{\centering\arraybackslash}m{3.5cm} >{\centering\arraybackslash}m{1.5cm} >{\centering\arraybackslash}m{2cm} >{\centering\arraybackslash}m{10cm}}
+\toprule
+Ontology Class & 類型 & 定義 & 說明及範例 \\
+\toprule
+\textit{locd:FigureFeature} & 圖徵 & 圖圖徵 & 圖徵中的定位物或目標物件，例如：「台灣大學位於羅斯福路上」中的「台灣大學」 \\
+\hline
+\textit{locd:GroundFeature} & 圖徵 & 地真圖徵 & 圖徵中的參考物，例如：「台灣大學位於羅斯福路上」中的「羅斯福路」 \\
+\hline
+\textit{locd:Prominence} & 性質 & 顯著性 & 能夠連結人類情感的程度，也包含物理面向，例如：「台北101」為台灣最高建築和強烈的都市意象 \\
+\hline
+\textit{locd:SpatialValue} & 性質 & 空間價值 & 能夠連結人類情感的程度，也包含物理面向，例如：「台北101」為台灣最高建築和強烈的都市意象 \\
+\hline
+\textit{locd:Specificity} & 性質 & 特殊性 & 地點對於人們的總體價值，例如：「信義區」為台灣重要的商業中心 \\
+\hline
+\textit{locd:Behavior} & 性質 & 行為 & 地點實際的物理性行為，例如：「大安森林公園」中閒晃 \\
+\hline
+\textit{locd:Action} & 性質 & 行動 & 地點可執行的意圖性活動，例如：「大安森林公園」中散步 \\
+\hline
+\textit{locd:Affordance} & 性質 & 可供性 & 地點可能提供的潛在活動，例如：「大安森林公園」提供邊哭邊跨年 \\
+\hline
+\textit{locd:Purpose} & 性質 & 目的 & 由情感、功能、物理、空間層面混合提供某個群體目的，例如：「國道」係為聯絡兩省(市)以上及重要交通設施或政經中心 \\
+\hline
+\textit{locd:Identity} & 性質 & 身份 & 地點對於某個群體共享的身份，例如：「人行道」對於行人來說可以是行人空間，而對於「開車族」而言可能是方便違停的地點 \\
+\hline
+\textit{locd:Typology} & 性質 & 類型 & 區分各種地方的方式，這些類型具有特定的情感、功能、物理和空間層面，例如：「道路」的目的係為提供交通流通的功能，同時也存在著空間範圍等不同面向 \\
+\hline
+\textit{locd:Address} & 性質 & 地址 & 以門牌定址作為空間參考系統的位置描述，例如：「台灣大學」為台北市大安區羅斯福路四段1號 \\
+\hline
+\textit{locd:Locatum} & 性質 & 定位物 & 以空間關係作為參考系統的位置描述中的描述對象，例如：「台灣大學位於羅斯福路上」的「台灣大學」 \\
+\hline
+\textit{locd:SpatialRelationship} & 性質 & (語意上的)空間關係 & 以空間關係作為參考系統的位置描述，例如：「台灣大學位於羅斯福路上」的「位於…上」這一概念 \\
+\hline
+\textit{locd:Relatum} & 性質 & 參考物 & 以空間關係作為參考系統的位置描述中的參考對象，例如：「台灣大學位於羅斯福路上」的「羅斯福路」 \\
+\hline
+\textit{locd:Toponym} & 性質 & 地名 & 對地點的直接參照，例如：「台北」、台北的「公館」 \\
+\hline
+\textit{locd:PlaceDescription} & 性質 & 地方描述 & 用語言對於地點詳細描述的內容，例如：「大安森林公園是充滿綠樹的公園」 \\
+\hline
+\textit{locd:PartsandStructure} & 性質 & 部分和結構 & 地點的內部組成，例如：「國道」有「匝道」 \\
+\hline
+\textit{locd:FormandStyle} & 性質 & 形式和風格 & 地點的視覺化內容，例如：「道路」有高架、平面和地下之分 \\
+\hline
+\textit{locd:Scale} & 性質 & 空間規模 & 地點在不同層次或細節水平上的存在和意義，例如：「國界縣」在OSM的縮放層級為4 \\
+\hline
+\textit{locd:Geometry} & 性質 & 幾何 & 空間物件的幾何類型，例如：Feature的基礎幾何類型為點、線和面 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
