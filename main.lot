@@ -1,19 +1,27 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {1.1}{\ignorespaces 位置描述範例}}{3}{table.caption.7}%
-\contentsline {table}{\numberline {1.2}{\ignorespaces 逆向地理編碼範例}}{4}{table.caption.8}%
+\contentsline {table}{\numberline {1.2}{\ignorespaces 逆向地理編碼範例}}{5}{table.caption.8}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces E-Hownet之詞條範例：「上」及「縣界」}}{24}{table.caption.16}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces E-Hownet之詞條範例：「上」及「縣界」}}{23}{table.caption.16}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces 既有知識本體之前綴與網址}}{24}{table.caption.17}%
 \contentsline {table}{\numberline {3.3}{\ignorespaces 圖徵與性質的類別、定義及範例}}{28}{table.caption.19}%
 \contentsline {table}{\numberline {3.4}{\ignorespaces 地形資料分類編碼表}}{29}{table.caption.20}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces 空間介詞與方位詞列表}}{33}{table.3.5}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces 規則推論階段範例}}{36}{table.caption.23}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces 空間介詞與方位詞列表}}{32}{table.3.5}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces 空間介詞和方位詞之空間尺度值}}{36}{table.caption.24}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces 規則推論階段範例}}{37}{table.caption.25}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces 情境分析之資料來源}}{40}{table.caption.26}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces 交通情境之地方面向值}}{42}{table.caption.27}%
+\contentsline {table}{\numberline {3.10}{\ignorespaces 災防告警情境之地方面向值}}{42}{table.caption.28}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces 圖資說明(擷取自瑞竣科技電子地圖集說明)}}{48}{table.caption.25}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces 圖資說明}}{52}{table.caption.30}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces 評估結果}}{64}{table.caption.37}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces 標記之真值}}{52}{table.caption.29}%
-\contentsline {table}{\numberline {A.2}{\ignorespaces 標記之真值}}{53}{table.caption.30}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces 研究結果}}{72}{table.6.1}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces 標記之真值}}{79}{table.caption.42}%
+\contentsline {table}{\numberline {B.3}{\ignorespaces 情境影響參考物件類型之規則}}{81}{table.caption.45}%
+\contentsline {table}{\numberline {B.4}{\ignorespaces 空間操作到空間關係之規則}}{81}{table.caption.46}%
+\contentsline {table}{\numberline {B.5}{\ignorespaces 語意到自然語言之規則}}{81}{table.caption.47}%
 \contentsfinish 
 \contentsfinish 

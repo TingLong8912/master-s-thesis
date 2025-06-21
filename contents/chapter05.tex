@@ -2,16 +2,289 @@
 
 \chapter{案例研究}
 
-本章說明位置描述知識本體和O-SLD框架的可行性實踐。本研究選擇警察廣播電台即時路況與災防告警細胞廣播訊息作為案例作為分析對象，以探討其對應情境中的位置描述。為此，首先擴展了道路和災防領域的位置語意之知識本體，以提升語意標註的完整性和適用性。接著，透過實驗結果和實體匹配之評估，驗證本研究方法在這兩個領域中產生位置描述的有效性。本節內容詳細如下：在4.1節中，介紹了實驗區的選擇與圖資；在4.2節說明案例動機、知識本體建構結果，以及語意式位置描述產出；在4.3節呈現案例評估之結果，並討論本研究提出方法適用性。
+本章說明位置描述知識本體和O-SLD框架的可行性實踐。本研究選擇警察廣播電台即時路況與災防告警細胞廣播訊息作為案例作為分析對象，以探討其對應情境中的位置描述。透過實驗結果和實體匹配之評估，驗證本研究方法在這兩個領域中產生位置描述的有效性。本章內容詳細如下：在5.1節中，介紹了實驗區的選擇與圖資；在5.2節說明語意式位置描述三個案例結果，與其背後的知識本體和推論機制；在5.3節說明案例評估之結果，並討論本研究提出方法適用性。
 
-\section{實驗區及圖資介紹}
+\section{研究區及圖資介紹}
 
-本研究選定臺灣地區十萬分之一索引圖中的「9723」圖框範圍(參見圖 12)，其介於北緯25度到25.5度和東經121.5度到122度之間，主要考量以下因素：首先，空間物件的多樣性，「9723」區域涵蓋都市、鄉村、山地及海洋水體等多種地理環境，有助於測試位置描述本體在不同空間物件類型下的適用性與語意描述能力，確保模型能夠應對各類地理情境。其次，區域的代表性，「9723」圖框範圍內包含臺灣首都臺北市，擁有密集的道路網絡與豐富的人為設施，使其成為語意式位置描述的理想測試案例，進一步提升研究成果的適用性與擴展性。第三，災害應變與道路通報應用的需求，該區域具有豐富的災害示警歷史記錄，且包含各層級的道路路網，適合作為災害示警與道路分析的應用情境，驗證本研究方法在實際應用中的可行性。最後，空間尺度適中，「9723」圖框範圍既不過於廣泛，以致運算與分析負擔過大，亦不過於狹小，以免影響研究結果的普適性。適當的空間尺度有助於在合理的資源限制下，進行有效的語意標註與分析。
+本研究選定臺灣本島作為小比例尺的研究區範圍(參見圖 \ref{fig:overviewMap} )，對於大比例尺的情境下，則選擇臺灣地區十萬分之一索引圖中的「9723」圖框範圍(參見圖 \ref{fig:detailedMap} )，以此涵蓋不同情境下對於圖資範圍之需求。前者用以描述如災防示警等需考量台灣本島大範圍的描述，例如台灣東南部、台灣東北部海域或台灣北部沿岸等，後者則更細緻至道路路網、市區內建物或地標等，以此描述在交通情境上對於道路環境描述之需。更詳細來說，「9723」圖框係其介於北緯25度到25.5度和東經121.5度到122度之間，主要考量以下因素：首先，空間物件的多樣性，「9723」區域涵蓋都市、鄉村、山地及海洋水體等多種地理環境，有助於測試位置描述本體在不同空間物件類型下的適用性與語意描述能力，確保模型能夠應對各類地理情境。其次，區域的代表性，「9723」圖框範圍內包含臺灣首都臺北市，擁有密集的道路網絡與豐富的人為設施，使其成為語意式位置描述的理想測試案例，進一步提升研究成果的適用性與擴展性。第三，災害應變與道路通報應用的需求，該區域具有豐富的災害示警歷史記錄，且包含各層級的道路路網，適合作為災害示警與道路分析的應用情境，驗證本研究方法在實際應用中的可行性。最後，空間尺度適中，「9723」圖框範圍既不過於廣泛，以致運算與分析負擔過大，亦不過於狹小，以免影響研究結果的普適性。適當的空間尺度有助於在合理的資源限制下，進行有效的語意標註與分析。此外，因應案例目標，在較為大尺度的空間物件類型擴展宜花和北北基桃兩個實驗區，以完整涵蓋單一物件，例如淡水河會橫跨「9723」圖框，同時此擴展提供研究評估更多樣的案例選擇。
 
-圖資使用為110年瑞竣科技電子地圖集，其圖層清單包含：道路中心線、鐵路、捷運、河流、縣市界、基礎地標、山峰等28類圖層(參見表 \ref{tab:layer} )。
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/expRegion.png}
+      \caption{總覽圖}
+      \label{fig:overviewMap}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/expRegion_detail.png}
+      \caption{詳細圖}
+      \label{fig:detailedMap}
+  \end{subfigure}
+    \caption{研究區範圍}
+    \label{fig:expRegion}
+\end{figure}
+
+本研究根據兩個案例目標，選擇道路中心線、河流、湖泊水庫、縣市界、鄉鎮市區界、村里界、基礎地標、地名註記、橋樑、山峰、海岸線和道路里程十一類圖資(參見表 \ref{tab:layer} )。圖資來源為110年瑞竣科技電子地圖集，其圖層清單包含：道路中心線、鐵路、捷運、河流、縣市界、基礎地標、山峰等28類圖層，交通部公路公路局的里程樁點位和內政部地政司的網格數值地形模型資料(Digital Terrain Model, DTM)。而後，進行資料前處理，包含以下內容：
+
+\begin{enumerate}
+  \item 移除空缺值，並合併同名之多重幾何之物件；
+  \item 道路中心線依照「道路寬度」欄位轉換成面資料；
+  \item 根據DTM與河流計算出河流的四方位端點和當中的最高與最低高程點作為河流上下游點標示；
+  \item 將圖資中關於「名稱」之欄位命名為「PlaceName」，對應LocD知識本體之類別。
+\end{enumerate}
 
 \input{tables/layer.tex}
 
 \section{研究結果}
 
+為展示本研究提出框架之適用性，選擇兩類情境作為案例討論對象，其中存在「交通」、「水庫放水示警」、「地震速報」、「大雷雨示警」和「海嘯警戒」五個子類中，共30個案例。本節展示位置描述結果，其查詢係基於點線或面圖徵、情境，以及根據「重要度更高，符合空間尺度」的結果，以下說明五個子類中的點、線及面各一例，並且描述其知識本體與推論過程，30個完整位置描述結果詳見附錄表 \ref{tab:results} 。
+
+\subsection{中山高速公路12.1公里附近（汐止系統交流道）}
+
+本研究於查詢點產生的交通情境相關之語意式位置描述為：\textbf{「中山高速公路12.1公里附近（汐止系統交流道）」}。圖 \ref{fig:contetDemo1} 展示該描述在圖面上的位置，其位置位於中山高速公路12.1公里處，鄰近汐止系統交流道。此區域同時包含了複雜的市區平面路網、河道與住宅區，具備多樣的空間物件。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = 0.7\textwidth]{figures/contentDemo1.png}
+\caption{「中山高速公路12.1公里附近（汐止系統交流道）」圖面}
+\label{fig:contetDemo1}
+\end{figure}
+
+此描述係以「中山高速公路」、「12.1公里」及「汐止系統交流道」為參考物件，並結合「Within」與「Near」兩種空間關係所產生的結果。圖 \ref{fig:locd_case1} 展示本案例對應於LocD知識本體中的類別結構。其中，「中山高速公路」被歸類為\textit{locd:ElevatedNationalFreeway} (高架國道)，「12.1公里」為\textit{locd:NationalHighwayMileage} (國道里程樁)，和「汐止交流道」為\textit{locd:NationalHighwayRamp} (國道匝道)之實例。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/Locd_case1.png}
+\caption{「中山高速公路12.1公里附近（汐止系統交流道）」知識本體結構(擷取)}
+\label{fig:locd_case1}
+\end{figure}
+
+上述個體經由本研究定義之第一階段之SWRL推論規則，被視為\textit{locd:GroundFeature} (參考物件)於交通情境中，使後續推理中得以根據其幾何位置與語意角色，推導出符合語用需求的自然語言位置描述，在該案例中使用到的規則如下三條，其中包含必要的物件屬性連結整體語意結構，其目的皆在綁定\textit{Traffic}的\textit{GroundFeature}為\textit{Road}、\textit{Landmark}和\textit{RoadMileage}，以避免涵蓋到不符合情境的參考物件，例如：河道或建物等。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Traffic(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^Road(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Traffic(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^Landmark(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Traffic(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^RoadMileage(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+而後，根據空間操作的查詢結果，進行映射至語意上的空間關係，該規則如下兩條所示。其一，為從拓樸的\textit{Within}關係，給定在\textit{OnSite}這一語意上的空間關係。另一，從拓樸的\textit{Disjoint}關係，依照查詢物件的幾何為\textit{Point}，給定在\textit{Near}這一語意上的空間關係。該關係係基於在每次選定任一參考物件時，會透過環域下去檢索，因此在這邊的\textit{Disjoint}意味在環域範圍，未相交的物件。亦可因需求，而增加\textit{locd:DistanceRelation}的判斷條件。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Within(?sr)^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)
+->OnSite(?sr)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Disjoint(?sr)^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)^
+hasQuality(?ref,?geometryType)^Point(?geometryType) 
+->Near(?sr)
+\end{lstlisting}
+
+最後，在獲得語意上的空間關係，基於E-HowNet的表達式與詞彙的對應關係，存在以下兩條規則。其一，從\textit{OnSite}這一語意上的空間關係，獲得\textit{AtSpatialPreposition} (「在」的空間介詞)，當中的\textit{?word}即包含實例「在」，因而經過規則推論的過程，從GIS的空間操作到語意空間關係，進而可以推論出詞彙，用於位置描述上。同樣地，另一規則從\textit{Near}這一語意上的空間關係，獲得\textit{NearLocaliser} (「鄰近」的方位詞)，當中包含實例「附近」。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+OnSite(?rel)^
+LocationDescription(?locad)^symbolize(?rel, ?locad)^
+AtSpatialPreposition(?word)
+->hasSpatialPreposition(?locad,?word)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Near(?rel)^
+LocationDescription(?locad)^symbolize(?rel,?locad)^
+NearLocaliser(?word)
+->hasLocaliser(?locad,?word)
+\end{lstlisting}
+
+\subsection{在台灣東部沿岸}
+
+本研究於查詢線產生的海嘯示警相關之語意式位置描述為：\textbf{「在台灣東部沿岸」}。圖 \ref{fig:contetDemo2} 展示該描述在圖面上的位置，其位置北至宜蘭縣南澳鄉，南至台東縣長濱鄉，鄰近太平洋。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = 0.7\textwidth]{figures/contentDemo2.png}
+\caption{「在台灣東部沿岸」圖面}
+\label{fig:contetDemo2}
+\end{figure}
+
+此描述係以「台灣」和「台灣的海域」為參考物件，並結合「Intersects」、「Disjoint」和「AbsoluteDirection」三種空間關係所產生的結果。圖 \ref{fig:locd_case1} 展示本案例對應於LocD知識本體中的類別結構。其中，「台灣」被歸類為\textit{locd:CoastLine} (海岸線)及「台灣的海域」被歸類為\textit{locd:Sea} (海域)之實例。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/Locd_case2.png}
+\caption{「在台灣東部沿岸」知識本體結構(擷取)}
+\label{fig:locd_case1}
+\end{figure}
+
+上述個體經由本研究定義之第一階段之SWRL推論規則，被視為\textit{locd:GroundFeature} (參考物件)於交通情境中，使後續推理中得以根據其幾何位置與語意角色，推導出符合語用需求的自然語言位置描述，在該案例中使用到的規則如下三條，其中包含必要的物件屬性連結整體語意結構，其目的皆在綁定\textit{Tsunami}的\textit{GroundFeature}為\textit{CoastLine}、\text{Nearshore}和\textit{Sea}，以避免涵蓋到不符合情境的參考物件，例如：山脈或建物等。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Tsunami(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^Coastline(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Tsunami(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^Sea(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+而後，根據空間操作的查詢結果，進行映射至語意上的空間關係，該規則如下三條所示。其一，為從拓樸的\textit{Intersects}關係，給定在\textit{OnSite}這一語意上的空間關係。另一，從拓樸的\textit{Disjoint}關係，及參考物件為\textit{gSurface} (面幾何類型)給定在\textit{External}這一語意上的空間關係。最後，從方位關係為東的情況中，及參考物件為\textit{gSurface} 給定在\textit{East}這一語意上的空間關係。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Intersects(?sr)^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)
+->OnSite(?sr)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Disjoint(?sr)^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)^
+hasQuality(?ref,?geometryType)^gSurface(?geometryType)
+->External(?sr)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+AbsoluteDirection(?sr)^directionValue(?sr,"east")^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)^
+hasQuality(?ref,?geometryType)^gSurface(?geometryType)
+->East(?sr)
+\end{lstlisting}
+
+最後，在獲得語意上的空間關係，基於E-HowNet的表達式與詞彙的對應關係，存在以下兩條規則。其一，從\textit{OnSite}這一語意上的空間關係，獲得\textit{AtSpatialPreposition} (「在」的空間介詞)，當中的\textit{?word}即包含實例「在」，因而經過規則推論的過程，從GIS的空間操作到語意空間關係，進而可以推論出詞彙，用於位置描述上。第二，從\textit{NorthPart}這一語意上的空間關係，結合指定參考物件類型為\textit{CoastLine}，獲得\textit{NorthernPartLocaliser} (「東部」的方位詞)，當中包含實例「東部」。最後，「沿岸」則是基於複合的空間關係與參考物件組成，一則為\textit{OnSite}這一語意上的空間關係之於參考物件類型為\textit{CoastLine}，另一為\textit{External}這一語意上的空間關係之於參考物件類型為\textit{Sea}，其意涵即是與陸地交集，而與海域無交集，視為\textit{ShoreLocaliser} (「沿岸」的方位詞)。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+OnSite(?rel)^
+LocationDescription(?locad)^symbolize(?rel, ?locad)^
+AtSpatialPreposition(?word)
+->hasSpatialPreposition(?locad,?word)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+EastPart(?rel1)^
+LocationDescription(?locad)^symbolize(?rel1, ?locad)^
+hasQuality(?ref,?type)^CoastLine(?type)
+EastPartLocaliser(?word)
+->hasLocaliser(?locad,?word)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+OnSite(?rel1)^External(?rel2)^
+LocationDescription(?locad)^symbolize(?rel1, ?locad)^
+GroundFeature(?ref1)^GroundFeature(?ref2)^
+hasGroundFeature(?rel1,?ref1)^hasGroundFeature(?rel2, ?ref2)
+^hasQuality(?ref1,?type1)^CoastLine(?type1)^
+hasQuality(?ref2,?type2)^Sea(?type2)
+^ShoreLocaliser(?word)
+->hasLocaliser(?locad, ?word)
+\end{lstlisting}
+
+\subsection{在新北市烏來區和新店區（新店溪河畔）}
+
+本研究於查詢多重面產生的大雷雨示警相關之語意式位置描述為：\textbf{「在新北市烏來區和新店區（新店溪河畔）」}。圖 \ref{fig:contetDemo3} 展示該描述在圖面上的位置，其位置分散於兩處，其一為新店烏來區，另一為石碇山區。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = 0.7\textwidth]{figures/contentDemo3.png}
+\caption{「在新北市烏來區和新店區（新店溪河畔）」圖面}
+\label{fig:contetDemo3}
+\end{figure}
+
+此描述係以「新店區」、「烏來區」和「新店溪」為參考物件，並結合「Intersects」空間關係所產生的結果。圖 \ref{fig:locd_case1} 展示本案例對應於LocD知識本體中的類別結構。其中，「新店區」和「烏來區」被歸類為\textit{locd:TownshipsCititesDistrictsBoundary} (鄉鎮市區邊界)及「新店溪」被歸類為\textit{locd:River} (河流)之實例。
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width = \textwidth]{figures/Locd_case3.png}
+\caption{「在新北市烏來區和新店區（新店溪河畔）」知識本體結構(擷取)}
+\label{fig:locd_case1}
+\end{figure}
+
+上述個體經由本研究定義之第一階段之SWRL推論規則，被視為\textit{locd:GroundFeature} (參考物件)於交通情境中，使後續推理中得以根據其幾何位置與語意角色，推導出符合語用需求的自然語言位置描述，在該案例中使用到的規則如下三條，其中包含必要的物件屬性連結整體語意結構，其目的皆在綁定\textit{Thunderstorm}的\textit{GroundFeature}為\textit{River}和\text{TownshipsCititesDistrictsBoundary}，以避免涵蓋到不符合情境的參考物件。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Thunderstorm(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^River(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+SpatialOperation(?rel)^
+hasContext(?rel,?ctx)^Thunderstorm(?ctx)^
+Feature(?f)^hasFeature(?rel,?f)^FigureFeature(?ff)^
+hasQuality(?f,?type)^TownshipsCititesDistrictsBoundary(?type) 
+->hasFigureFeature(?rel,?ff)^GroundFeature(?f)^hasGroundFeature(?rel,?f)
+\end{lstlisting}
+
+而後，根據空間操作的查詢結果，進行映射至語意上的空間關係，該規則如下兩條所示，皆是從拓樸的\textit{Intersects}關係而來，其一為，前述案例也提及之\textit{OnSite}這一語意上的空間關係。另一，則是結合參考物件為\textit{River} (河流)給定在\textit{Side} (側)這一語意上的空間關係。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Intersects(?sr)^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)
+->OnSite(?sr)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+OnSite(?sr)^
+FigureFeature(?target)^hasFigureFeature(?sr,?target)^
+GroundFeature(?ref)^hasGroundFeature(?sr,?ref)^
+hasQuality(?ref,?type),River(?type)
+->Side(?sr)
+\end{lstlisting}
+
+最後，在獲得語意上的空間關係，基於E-HowNet的表達式與詞彙的對應關係，存在以下兩條規則。其一，從\textit{OnSite}這一語意上的空間關係，獲得\textit{AtSpatialPreposition} (「在」的空間介詞)。另一，從\textit{Side}這一語意上的空間關係，結合指定參考物件類型為\textit{River}，獲得\textit{RiverSideLocaliser} (「河畔」的方位詞)，當中包含實例「河畔」。
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+OnSite(?rel)^
+LocationDescription(?locad)^symbolize(?rel, ?locad)^
+AtSpatialPreposition(?word)
+->hasSpatialPreposition(?locad,?word)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Prolog, basicstyle=\ttfamily, xleftmargin=2em]
+Side(?rel)^
+LocationDescription(?locad)^symbolize(?rel, ?locad)^
+GroundFeature(?ref)^hasGroundFeature(?rel,?ref)^
+hasQuality(?ref,?type)^River(?type)^
+RiverSideLocaliser(?word)
+->hasLocaliser(?locad,?word)
+\end{lstlisting}
+
 \section{評估與討論}
+
+\input{tables/spice.tex}

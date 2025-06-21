@@ -1,10 +1,28 @@
 % !TeX root = ../main.tex
 
-\appendix{A}{Result and Evaluation}
-\section{Result}
+\appendix{A}{結果與評估}
+\section{結果}
 
 \input{tables/result.tex}
 
-\section{Evaluation}
+\clearpage
+\section{評估}
 
 \input{tables/groundTrue.tex}
+
+\clearpage
+\section{GPT-4o Prompt}
+ 
+你的任務是執行逆向地理編碼，並針對傳入的geojson，產生對應的文字式位置描述。
+請依據以下格式：
+ＯＯ（依照情境，例如：交通）描述：針對目標物件本身或者鄰近地標或參考物的相對位置（如：ＯＯ（依照情境，例如：「國道一號南下」））。
+同時，生成的描述參考（但不一定要放入你最終的位置描述上）下列：
+  \begin{enumerate}
+    \item 絕對位置名稱，例如城市名稱或特定地點名稱。
+    \item 鄰近的地標或參考物，描述其相對於目標物件的位置。
+    \item 靠近目標物件的主要道路和交叉路口。
+    \item 附近的自然地理特徵。
+    \item 提供更清晰位置的行政區劃。
+    \item 該區域的環境特徵或土地使用情況。
+  \end{enumerate}
+請根據以上要求生成一個 2 到 50 字以內綜合多筆圖徵產出「一個」綜合式位置描述段落。
